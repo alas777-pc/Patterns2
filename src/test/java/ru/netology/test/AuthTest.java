@@ -1,6 +1,7 @@
 package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ import static ru.netology.data.DataGenerator.getRandomPassword;
 
 public class AuthTest {
     @BeforeEach
-    void setup() {
+     void setup() {
         open("http://localhost:9999");
     }
 
@@ -27,7 +28,7 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
         $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
-        $("h2").shouldHave(Condition.exactText("Личный кабинет"), Condition.visible);
+        $("h2").should(Condition.exactText("Личный кабинет"), Condition.visible);
     }
 
     @Test
